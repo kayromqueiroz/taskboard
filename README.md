@@ -1,6 +1,6 @@
 # TaskBoard
 
-TaskBoard e um quadro Kanban criado com HTML, CSS e JavaScript. O projeto permite organizar tarefas por etapa, prioridade e prazo em uma interface simples de produtividade.
+O projeto permite organizar tarefas por etapa, prioridade e prazo em uma interface simples de produtividade.
 
 ## Funcionalidades
 
