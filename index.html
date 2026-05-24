@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskBoard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Kanban de produtividade</p>
+          <h1>TaskBoard</h1>
+          <p class="hero-copy">
+            Organize tarefas por etapa, prioridade e prazo em um quadro simples para acompanhar o fluxo de trabalho.
+          </p>
+        </div>
+        <div class="hero-stat">
+          <span>Tarefas ativas</span>
+          <strong id="active-count">0</strong>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="Resumo das tarefas">
+        <article class="summary-card">
+          <span>A fazer</span>
+          <strong id="todo-count">0</strong>
+        </article>
+        <article class="summary-card">
+          <span>Fazendo</span>
+          <strong id="doing-count">0</strong>
+        </article>
+        <article class="summary-card">
+          <span>Concluidas</span>
+          <strong id="done-count">0</strong>
+        </article>
+        <article class="summary-card">
+          <span>Alta prioridade</span>
+          <strong id="high-count">0</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <aside class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Nova tarefa</p>
+              <h2 id="form-title">Criar card</h2>
+            </div>
+          </div>
+
+          <form class="task-form" id="task-form">
+            <label>
+              Titulo
+              <input type="text" id="title" placeholder="Ex: Criar tela inicial" required />
+            </label>
+
+            <label>
+              Descricao
+              <textarea id="description" rows="4" placeholder="Detalhes importantes da tarefa..."></textarea>
+            </label>
+
+            <div class="form-row">
+              <label>
+                Status
+                <select id="status">
+                  <option value="todo">A fazer</option>
+                  <option value="doing">Fazendo</option>
+                  <option value="done">Concluido</option>
+                </select>
+              </label>
+
+              <label>
+                Prioridade
+                <select id="priority">
+                  <option value="high">Alta</option>
+                  <option value="medium">Media</option>
+                  <option value="low">Baixa</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Etiqueta
+              <select id="tag">
+                <option value="Frontend">Frontend</option>
+                <option value="Design">Design</option>
+                <option value="Bug">Bug</option>
+                <option value="Conteudo">Conteudo</option>
+                <option value="Pesquisa">Pesquisa</option>
+              </select>
+            </label>
+
+            <label>
+              Prazo
+              <input type="date" id="due-date" required />
+            </label>
+
+            <div class="form-actions">
+              <button id="submit-button" type="submit">Adicionar</button>
+              <button class="ghost-button hidden" id="cancel-edit" type="button">Cancelar</button>
+            </div>
+          </form>
+        </aside>
+
+        <section class="board-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Quadro</p>
+              <h2>Tarefas do projeto</h2>
+            </div>
+            <button class="ghost-button" id="clear-tasks" type="button">Limpar</button>
+          </div>
+
+          <div class="filters" aria-label="Filtros de tarefas">
+            <label>
+              Buscar
+              <input type="search" id="search-filter" placeholder="Titulo ou descricao" />
+            </label>
+
+            <label>
+              Prioridade
+              <select id="priority-filter">
+                <option value="all">Todas</option>
+                <option value="high">Alta</option>
+                <option value="medium">Media</option>
+                <option value="low">Baixa</option>
+              </select>
+            </label>
+
+            <label>
+              Etiqueta
+              <select id="tag-filter">
+                <option value="all">Todas</option>
+                <option value="Frontend">Frontend</option>
+                <option value="Design">Design</option>
+                <option value="Bug">Bug</option>
+                <option value="Conteudo">Conteudo</option>
+                <option value="Pesquisa">Pesquisa</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="kanban-board" id="kanban-board">
+            <section class="kanban-column" data-status="todo">
+              <header>
+                <h3>A fazer</h3>
+                <span id="todo-column-count">0</span>
+              </header>
+              <div class="task-list" id="todo-list"></div>
+            </section>
+
+            <section class="kanban-column" data-status="doing">
+              <header>
+                <h3>Fazendo</h3>
+                <span id="doing-column-count">0</span>
+              </header>
+              <div class="task-list" id="doing-list"></div>
+            </section>
+
+            <section class="kanban-column" data-status="done">
+              <header>
+                <h3>Concluido</h3>
+                <span id="done-column-count">0</span>
+              </header>
+              <div class="task-list" id="done-list"></div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
